@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+pydantic
+pydantic[email]
+python-dotenv
+numpy
+pandas
+matplotlib
+seaborn
+jinja2
+requests
+httpx
+google-generativeai     # Gemini
+python-multipart
+loguru
