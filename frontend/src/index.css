@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  @apply bg-secondary text-gray-800 font-sans;
+}
+
+/* Custom component classes */
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-accent;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-300 text-gray-800 px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-gray-400;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-5;
+  }
+
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary;
+  }
+
+  /* AI Showcase specific helpers */
+  .ai-textarea {
+    @apply w-full p-3 border rounded font-mono text-sm min-h-[240px] h-64 lg:h-[340px] resize-vertical bg-white;
+  }
+
+  .ai-card {
+    @apply bg-white rounded-lg p-4 shadow-sm;
+  }
+
+  .ai-steps-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+  }
+
+  pre {
+    @apply whitespace-pre-wrap break-words text-xs;
+  }
+}

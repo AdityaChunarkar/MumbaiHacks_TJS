@@ -1,0 +1,176 @@
+import React, { useState, useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { Home, BookOpen, DollarSign, PiggyBank, TrendingUp, FileText, Wallet, LogOut } from 'lucide-react';
+import './dashboard.css';
+import Dashboardlogo from "../assets/dashboardLogo.svg";
+
+const Dashboard = () => {
+    const [showModal, setShowModal] = useState(false);
+    const [financialData, setFinancialData] = useState({ income: 0 });
+    const [spendings, setSpendings] = useState(0);
+
+    useEffect(() => {
+        const fetchSpendings = async () => {
+            try {
+                const fetchedSpendings = 10000; 
+                setSpendings(fetchedSpendings);
+            } catch (error) {
+                console.error("Error fetching spendings:", error);
+            }
+        };
+        fetchSpendings();
+    }, []);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFinancialData({ ...financialData, [name]: parseInt(value) || 0 });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setShowModal(false);
+    };
+
+    const calculateSavings = () => {
+        return financialData.income - spendings;
+    };
+
+    const data = [
+        { name: 'Income', value: financialData.income },
+        { name: 'Spendings', value: spendings },
+        { name: 'Savings', value: calculateSavings() },
+    ];
+
+    const data2 = [
+        { name: 'Food', value: 4000 },
+        { name: 'Transport', value: 2000 },
+        { name: 'Entertainment', value: 1000 },
+        { name: 'Health', value: 500 },
+        { name: 'Others', value: 500 }
+    ];
+
+    return (
+        <div className='dashboard-container'>
+            <aside className='dashboard-slider'> 
+                <nav className='dashboard-slider-item'>
+                    <img className='logod' src={Dashboardlogo} alt='dashboard-logo' />
+                    <nav className="W">
+                        <ul className="space">
+                            {[{ icon: <Home size={35} />, label: 'Dashboard' },
+                            { icon: <BookOpen size={35} />, label: 'Accounts' },
+                            { icon: <DollarSign size={35} />, label: 'Spendings' },
+                            { icon: <PiggyBank size={35} />, label: 'Savings' },
+                            { icon: <TrendingUp size={35} />, label: 'Investment' },
+                            { icon: <FileText size={35} />, label: 'Report' },
+                            { icon: <Wallet size={35} />, label: 'Loans' }].map((item, index) => (
+                                <li key={index}>
+                                    <a href="#" className="X">
+                                        <span className="A">{item.icon}</span>
+                                        <span className="b">{item.label}</span>
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="ll1">
+                            <a href="#" className="llul" onClick={(e) => { e.preventDefault(); }}>
+                                <div className="ll">
+                                    <LogOut size={35} className="llcl" />
+                                    <span className="llcl2">Logout</span>
+                                </div>
+                            </a>
+                        </div>
+                    </nav>
+                </nav>
+            </aside>
+
+            <main className='main-content'>
+                <div className='dashboard-content-item'>
+                    <h2>Welcome!<span> 😊 </span></h2>
+                    <div className='financial-cards'>
+                        <div className='financial-card'>
+                            <h4>Income</h4>
+                            <p className='amount income'>₹{financialData.income}</p>
+                        </div>
+                        <div className='financial-card'>
+                            <h4>Spendings</h4>
+                            <p className='amount spendings'>₹{spendings}</p>
+                        </div>
+                        <div className='financial-card'>
+                            <h4>Savings</h4>
+                            <p className='amount savings'>₹{calculateSavings()}</p>
+                        </div>
+                    </div>
+                    <button className="edit-button" onClick={() => setShowModal(true)}>
+                        Edit Income
+                    </button>
+                </div>
+
+                <div className='graph-info'>
+                    <h3>Graphical Analysis<snap>🏦</snap></h3>
+                    <div className='graph'>
+                        <BarChart
+                            width={600}
+                            height={300}
+                            data={data}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="value" fill="#213555" />
+                        </BarChart>
+                    </div>
+                </div>
+
+                <div className='graph-info2'>
+                    <h3>Spendings Analysis <snap>📉</snap></h3>
+                    <div className='graph'>
+                        <BarChart
+                            width={600}
+                            height={300}
+                            data={data2}
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                        >
+                            <CartesianGrid strokeDasharray="3 3" />
+                            <XAxis dataKey="name" />
+                            <YAxis />
+                            <Tooltip />
+                            <Legend />
+                            <Bar dataKey="value" fill="#213555" />
+                        </BarChart>
+                    </div>
+                </div>
+            </main>
+
+            {showModal && (
+                <div className='modal-overlay'>
+                    <div className='modal'>
+                        <h3 className='form-group2'>Edit Income</h3>
+                        <form onSubmit={handleSubmit}>
+                            <div className='form-group2'>
+                                <label htmlFor='income'>Income</label>
+                                <input
+                                    type='number'
+                                    id='income'
+                                    name='income'
+                                    value={financialData.income}
+                                    onChange={handleInputChange}
+                                />
+                            </div>
+                            <div className='modal-buttons'>
+                                <button className='button101' type='submit'>Save</button>
+                                <button className='button101' type='button' onClick={() => setShowModal(false)}>
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+};
+
+export default Dashboard;

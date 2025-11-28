@@ -1,0 +1,161 @@
+/* dashboard.css */
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.dashboard-slider {
+    flex: 1;
+    background-color: #213555;
+    padding: 10px;
+}
+
+.dashboard-slider-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-slider-item img {
+    width: 80%;
+    max-width: 150px;
+    margin-bottom: 20px;
+}
+
+/* Main content area */
+.main-content {
+    flex: 4;
+    padding: 20px;
+}
+
+/* Financial cards */
+.financial-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.financial-card {
+    flex: 1;
+    margin: 10px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.financial-card h4 {
+    margin: 0 0 10px;
+}
+
+.financial-card .amount {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Graphs */
+.graph-info,
+.graph-info2 {
+    margin-top: 30px;
+}
+
+.graph {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-button {
+    background-color: #213555;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Modal */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.button101 {
+    background-color: #213555;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .dashboard-slider {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .financial-cards {
+        flex-direction: column;
+    }
+
+    .financial-card {
+        margin-bottom: 10px;
+    }
+
+    .graph-info,
+    .graph-info2 {
+        margin-top: 20px;
+    }
+
+    .graph {
+        width: 100%;
+    }
+
+    .edit-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .financial-card {
+        padding: 15px;
+    }
+
+    .modal {
+        width: 250px;
+    }
+}
