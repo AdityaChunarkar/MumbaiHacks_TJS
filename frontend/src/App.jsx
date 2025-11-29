@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./components/Login/Login.jsx";
 import Signup from "./components/signup/signup.jsx";    
 import Home from "./components/home.jsx";
 import Dashboard from "./components/dashboard/dashboard.jsx";
@@ -9,11 +8,8 @@ import DetailpgTwo from "./components/details/DetailpgTwo.jsx";
 import Detailspf from "./components/details/detailspf.jsx";
 import Investment from "./components/investment/Investment.jsx";
 import Income from "./components/Income/Income.jsx";
-import Report from "./components/Report/Report.jsx";
-import LandingPage from "./components/Landingpage/Landingpage.jsx";
 import Saving from "./components/savings/Saving.jsx";
 import Spending from "./components/spendings/Spending.jsx";
-import Loan_page from "./components/loans/Loan_page.jsx";
 import Chatbot from "./components/gimini/Chatbot.jsx";
 import TaxPage from "./components/tax/TaxPage.jsx";
 import BudgetPlanningTools from "./components/buget/BudgetPlanningTools.jsx";
@@ -23,7 +19,6 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
                     <Route path="/details" element={<Detailpg />} />
                     <Route path="/detailstwo" element={<DetailpgTwo />} />
@@ -31,11 +26,8 @@ const App = () => {
                     <Route path="/detailspf" element={<Detailspf />} />
                     <Route path="/investment" element={<Investment />} />
                     <Route path="/income" element={<Income />} />
-                    <Route path="/report" element={<Report />} />
-                    <Route path="/landingpage" element={<LandingPage/>} /> 
                     <Route path="/savings" element={<Saving/>}  />
                     <Route path="/spendings" element={<Spending/>} />
-                    <Route path="/loan_page" element={<Loan_page/>} />
                     <Route path="/chatbot" element={<Chatbot />} />
                     <Route path="/taxpage" element={<TaxPage />} />
                     <Route path="/budgetplanningtools" element={<BudgetPlanningTools />} />
