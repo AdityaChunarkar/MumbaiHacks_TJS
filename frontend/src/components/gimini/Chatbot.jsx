@@ -8,7 +8,7 @@ const Chatbot = () => {
     ]);
     const [input, setInput] = useState("");
     const [isThinking, setIsThinking] = useState(false);
-    const API_KEY = ""; // **REPLACE KEY**
+    const API_KEY = "";
     const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
 
     const isFinanceQuestion = (text) => {
